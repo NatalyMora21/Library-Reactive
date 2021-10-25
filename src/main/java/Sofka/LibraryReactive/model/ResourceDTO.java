@@ -17,6 +17,18 @@ public class ResourceDTO {
     public ResourceDTO() {
     }
 
+
+
+    public ResourceDTO(String id, String title, Type type, Thematic thematic, Integer stock, Integer lending, LocalDate date) {
+        this.id = id;
+        this.title = title;
+        this.type = type;
+        this.thematic = thematic;
+        this.stock = stock;
+        this.lending = lending;
+        this.date = date;
+    }
+
     public String getId() {
         return id;
     }
