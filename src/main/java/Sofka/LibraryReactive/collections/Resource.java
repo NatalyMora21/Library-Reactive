@@ -18,6 +18,7 @@ public class Resource {
     private Integer stock;
     private Integer lending;
     private LocalDate date;
+    private Boolean state;
 
     public String getId() {
         return id;
@@ -73,5 +74,13 @@ public class Resource {
 
     public void setDate(LocalDate date) {
         this.date = date;
+    }
+
+    public Boolean getState() {
+        return state;
+    }
+
+    public void setState(Boolean state) {
+        this.state = state;
     }
 }

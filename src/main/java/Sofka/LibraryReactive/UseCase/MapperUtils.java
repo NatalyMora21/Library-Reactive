@@ -20,6 +20,7 @@ public class MapperUtils {
             resource.setStock(updateResource.getStock());
             resource.setLending(updateResource.getLending());
             resource.setDate(updateResource.getDate());
+            resource.setState(updateResource.getState());
 
             return resource;
         };
@@ -33,7 +34,8 @@ public class MapperUtils {
                 entity.getThematic(),
                 entity.getStock(),
                 entity.getLending(),
-                entity.getDate()
+                entity.getDate(),
+                entity.getState()
         );
     }
 

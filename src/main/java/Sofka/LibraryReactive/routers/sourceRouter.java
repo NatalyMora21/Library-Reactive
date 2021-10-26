@@ -2,6 +2,8 @@ package Sofka.LibraryReactive.routers;
 
 import Sofka.LibraryReactive.UseCase.GetResourceUseCase;
 import Sofka.LibraryReactive.UseCase.ListResourceUseCase;
+import Sofka.LibraryReactive.UseCase.LoadResourceUseCase;
+import Sofka.LibraryReactive.UseCase.ReturnResourceUseCase;
 import Sofka.LibraryReactive.model.AvalibleResourceDto;
 import Sofka.LibraryReactive.model.ResourceDTO;
 import org.springframework.context.annotation.Bean;
@@ -32,6 +34,30 @@ public class sourceRouter {
                 GET("/resourceInfo/{id}").and(accept(MediaType.APPLICATION_JSON)),
                 request -> ServerResponse.ok()
                         .body(BodyInserters.fromPublisher(getResourceUseCase.apply(
+                                        request.pathVariable("id")),
+                                AvalibleResourceDto.class
+                        ))
+        );
+    }
+
+    @Bean
+    public RouterFunction<ServerResponse> load(LoadResourceUseCase loadResourceUseCase) {
+        return route(
+                PUT("/resourceLoad/{id}").and(accept(MediaType.APPLICATION_JSON)),
+                request -> ServerResponse.ok()
+                        .body(BodyInserters.fromPublisher(loadResourceUseCase.apply(
+                                        request.pathVariable("id")),
+                                AvalibleResourceDto.class
+                        ))
+        );
+    }
+
+    @Bean
+    public RouterFunction<ServerResponse> returnResource(ReturnResourceUseCase returnResourceUseCase) {
+        return route(
+                PUT("/resourceReturn/{id}").and(accept(MediaType.APPLICATION_JSON)),
+                request -> ServerResponse.ok()
+                        .body(BodyInserters.fromPublisher(returnResourceUseCase.apply(
                                         request.pathVariable("id")),
                                 AvalibleResourceDto.class
                         ))

@@ -13,13 +13,14 @@ public class ResourceDTO {
     private Integer stock;
     private Integer lending;
     private LocalDate date;
+    private Boolean state;
 
     public ResourceDTO() {
     }
 
 
 
-    public ResourceDTO(String id, String title, Type type, Thematic thematic, Integer stock, Integer lending, LocalDate date) {
+    public ResourceDTO(String id, String title, Type type, Thematic thematic, Integer stock, Integer lending, LocalDate date,Boolean estado) {
         this.id = id;
         this.title = title;
         this.type = type;
@@ -27,6 +28,7 @@ public class ResourceDTO {
         this.stock = stock;
         this.lending = lending;
         this.date = date;
+        this.state= estado;
     }
 
     public String getId() {
@@ -83,5 +85,13 @@ public class ResourceDTO {
 
     public void setDate(LocalDate date) {
         this.date = date;
+    }
+
+    public Boolean getState() {
+        return state;
+    }
+
+    public void setState(Boolean state) {
+        this.state = state;
     }
 }
