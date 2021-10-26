@@ -73,5 +73,17 @@ public class sourceRouter {
         );
     }
 
+    @Bean
+    public RouterFunction<ServerResponse> searchThematic(ListResourceThematicUseCase listResourceThematicUseCase) {
+        return route(
+                GET("/resourceThematic/{id}").and(accept(MediaType.APPLICATION_JSON)),
+                request -> ServerResponse.ok()
+                        .body(BodyInserters.fromPublisher(listResourceThematicUseCase.getResourcesByThematic(
+                                        request.pathVariable("id")),
+                                ResourceDTO.class
+                        ))
+        );
+    }
+
 
 }

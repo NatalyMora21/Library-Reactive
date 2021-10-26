@@ -8,8 +8,7 @@ import reactor.core.publisher.Flux;
 
 public interface ResourceRespository extends ReactiveCrudRepository<Resource,String> {
 
-
     Flux<Resource> findAllByType(Type type);
-    Flux<Resource> findByThematic(Thematic thematic);;
+    Flux<Resource> findByThematic(Thematic thematic);
 
 }
