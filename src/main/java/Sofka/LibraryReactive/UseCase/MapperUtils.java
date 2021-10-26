@@ -9,18 +9,18 @@ import java.util.function.Function;
 @Component
 public class MapperUtils {
 
-    public Function<ResourceDTO, Resource> mapperToResource() {
+    public Function<ResourceDTO, Resource> mapperToResource(String id) {
 
         return updateResource -> {
             var resource = new Resource();
-            resource.setId(updateResource.getId());
+            resource.setId(id);
             resource.setTitle(updateResource.getTitle());
             resource.setType(updateResource.getType());
             resource.setThematic(updateResource.getThematic());
             resource.setStock(updateResource.getStock());
-            resource.setLending(updateResource.getLending());
+            resource.setLending(0);
             resource.setDate(updateResource.getDate());
-            resource.setState(updateResource.getState());
+            resource.setState(false);
 
             return resource;
         };

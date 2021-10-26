@@ -31,6 +31,15 @@ public class ResourceDTO {
         this.state= estado;
     }
 
+    public ResourceDTO(String title, Type type, Thematic thematic, Integer stock) {
+        this.title = title;
+        this.type = type;
+        this.thematic = thematic;
+        this.stock = stock;
+        this.lending = 0;
+        this.state= false;
+    }
+
     public String getId() {
         return id;
     }
