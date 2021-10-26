@@ -1,9 +1,6 @@
 package Sofka.LibraryReactive.routers;
 
-import Sofka.LibraryReactive.UseCase.GetResourceUseCase;
-import Sofka.LibraryReactive.UseCase.ListResourceUseCase;
-import Sofka.LibraryReactive.UseCase.LoadResourceUseCase;
-import Sofka.LibraryReactive.UseCase.ReturnResourceUseCase;
+import Sofka.LibraryReactive.UseCase.*;
 import Sofka.LibraryReactive.model.AvalibleResourceDto;
 import Sofka.LibraryReactive.model.ResourceDTO;
 import org.springframework.context.annotation.Bean;
@@ -60,6 +57,18 @@ public class sourceRouter {
                         .body(BodyInserters.fromPublisher(returnResourceUseCase.apply(
                                         request.pathVariable("id")),
                                 AvalibleResourceDto.class
+                        ))
+        );
+    }
+
+    @Bean
+    public RouterFunction<ServerResponse> searchType(ListResourceTypeUseCase listResourceTypeUseCase) {
+        return route(
+                GET("/resourceType/{id}").and(accept(MediaType.APPLICATION_JSON)),
+                request -> ServerResponse.ok()
+                        .body(BodyInserters.fromPublisher(listResourceTypeUseCase.getResourcesByType(
+                                        request.pathVariable("id")),
+                                ResourceDTO.class
                         ))
         );
     }
