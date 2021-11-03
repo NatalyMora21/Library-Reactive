@@ -3,9 +3,13 @@
 
 autonumber
 
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
+actor user
+user -> Interfaz: Request a resource
+Interfaz --> Servidor: Send request
+database Mongo
+Servidor  --> Mongo: Check resource status
+Servidor  --> Mongo: Update status if available
+Servidor  --> Interfaz: Return status
 
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
+Interfaz --> user: Resource available or not available
 @enduml
