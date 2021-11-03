@@ -1,0 +1,35 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+
+skinparam actorStyle awesome
+left to right direction
+actor :usuario: as user
+actor :Administrator: as admin
+package Library{
+
+usecase (Delete a resource) as (UC9)
+usecase (Create a resource) as (UC10)
+usecase (Update a resource) as (UC11)
+usecase (Consult all resources) as (UC1)
+usecase (Consult a resource) as (UC2)
+usecase (Check the availability of a resource) as (UC3)
+usecase (Filter resources by subject) as (UC4)
+usecase (Filter resources by type) as (UC5)
+usecase (Lend a resource) as (UC7)
+usecase (Return a resource) as (UC8)
+
+}
+user --> UC1
+user--> UC2
+user--> UC3
+user --> UC4
+user --> UC5
+user--> UC6
+user--> UC7
+admin--> UC7
+user --> UC8
+admin--> UC8
+admin --> UC9
+admin-->UC10
+admin-->UC11
+@enduml
